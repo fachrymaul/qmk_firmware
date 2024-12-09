@@ -22,8 +22,14 @@ enum custom_keycodes {
 #define SYM_L   MO(_SYMB)
 #define NAV_L   MO(_NAV)
 
+#define SPSM    LT(_SYMB, KC_SPC)
+#define BSSM    LT(_SYMB, KC_BSPC)
+#define ENNV    LT(_NAV, KC_ENT)
+#define DLNV    LT(_NAV, KC_DEL)
+
 #define KC_ALAS LALT_T(KC_PAST)
 #define KC_CTPL LCTL_T(KC_BSLS)
+#define KC_CTBS LCTL(KC_BSPC)
 
 #define KC_NAGR LT(_NAV, KC_GRV)
 #define KC_NAMI LT(_NAV, KC_MINS)
@@ -69,23 +75,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_ESC  ,HODV_A  ,HODV_O  ,HODV_E  ,HODV_U  ,KC_I    ,KC_PSCR ,                          KC_CAPS ,KC_D    ,HODV_H  ,HODV_T  ,HODV_N  ,HODV_S  ,KC_MINS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT ,KC_SCLN ,KC_Q    ,KC_J    ,KC_K    ,KC_X    ,SYM_L   ,NAV_L   ,        NAV_L   ,SYM_L   ,KC_B    ,KC_M    ,KC_W    ,KC_V    ,KC_Z    ,KC_RSFT ,
+     KC_LSFT ,KC_SCLN ,KC_Q    ,KC_J    ,KC_K    ,KC_X    ,KC_PGUP ,KC_PGDN ,        KC_HOME ,KC_END  ,KC_B    ,KC_M    ,KC_W    ,KC_V    ,KC_Z    ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     KC_LGUI ,KC_PLUS ,KC_MINS ,KC_BSLS ,     KC_TAB  ,    KC_SPC  ,KC_ENT  ,        KC_DEL  ,KC_BSPC ,    KC_INS  ,     KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT 
+     KC_LGUI ,KC_PLUS ,KC_MINS ,KC_BSLS ,     KC_TAB  ,    SPSM    ,ENNV    ,        DLNV    ,BSSM    ,    KC_BSLS ,     KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_NAGR ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,KC_NAMI ,
+     KC_NAGR ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,KC_EQL  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,_______ ,                          _______ ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_EQL  ,
+     KC_TAB  ,KC_QUOT ,KC_COMM ,KC_DOT  ,KC_P    ,KC_Y    ,KC_TGQW ,                          KC_TGQW ,KC_F    ,KC_G    ,KC_C    ,KC_R    ,KC_L    ,KC_SLSH ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_ESC  ,HOME_A  ,HOME_S  ,HOME_D  ,HOME_F  ,KC_G    ,KC_PSCR ,                          KC_CAPS ,KC_H    ,HOME_J  ,HOME_K  ,HOME_L  ,HOME_SC ,KC_QUOT ,
+     KC_ESC  ,KC_A    ,KC_O    ,HODV_E  ,KC_U    ,KC_I    ,XXXXXXX ,                          XXXXXXX ,KC_D    ,KC_H    ,HODV_T  ,KC_N    ,KC_S    ,KC_MINS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,SYM_L   ,NAV_L   ,        NAV_L   ,SYM_L   ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT ,
+     KC_LSFT ,KC_SCLN ,KC_Q    ,KC_J    ,KC_K    ,KC_X    ,KC_PGUP ,KC_PGDN ,        KC_HOME ,KC_END  ,KC_B    ,KC_M    ,KC_W    ,KC_V    ,KC_Z    ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     KC_LGUI ,KC_PLUS ,KC_MINS ,KC_BSLS ,     KC_TAB  ,    KC_SPC  ,KC_ENT  ,        KC_DEL  ,KC_BSPC ,    KC_INS  ,     KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT 
+     KC_LGUI ,KC_PLUS ,KC_MINS ,KC_BSLS ,     KC_TAB  ,    SPSM    ,ENNV    ,        DLNV    ,KC_CTBS    ,    KC_BSLS ,     KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -99,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______ ,KC_LBRC ,KC_RBRC ,KC_LCBR ,KC_RCBR ,KC_BSLS ,_______ ,_______ ,        _______ ,_______ ,KC_EQL  ,KC_DOT  ,KC_SLASH,KC_PLUS ,KC_MINS ,_______ ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______ ,_______ ,_______ ,     KC_F11  ,    _______ ,_______ ,        _______ ,_______ ,    KC_F12  ,     _______ ,_______ ,_______ ,_______  
+     _______ ,_______ ,_______ ,_______ ,     KC_F11  ,    _______ ,_______ ,        _______ ,KC_CTBS ,    KC_F12  ,     _______ ,_______ ,_______ ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -113,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      XXXXXXX ,XXXXXXX ,KC_BRID ,XXXXXXX ,KC_BRIU ,XXXXXXX ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,KC_HOME ,KC_PGDN ,KC_PGUP ,KC_END  ,XXXXXXX  ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     KC_BTN1 ,    KC_BTN2 ,KC_BTN3 ,        KC_BTN3 ,KC_BTN2 ,    KC_BTN1 ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX 
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     KC_BTN1 ,    KC_BTN2 ,KC_BTN3 ,        KC_BTN3 ,KC_BTN2 ,    KC_BTN1 ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   )
 
